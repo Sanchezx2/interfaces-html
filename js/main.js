@@ -152,7 +152,7 @@ const showcaseData = {
       watermark: "K/DA",
       subtitle: "POP/STARS · BANDA SONORA",
       title: "MORE & POP/STARS",
-      desc: "Un lolillo?",
+      desc: "Un lolete?",
       giantName: "K/DA",
       quote: "“You know who it is.”",
       tag: "BANDA SONORA",
@@ -180,7 +180,7 @@ const showcaseData = {
     {
       label: "Dua Lipa",
       watermark: "DUA LIPA",
-      subtitle: "NOCHE · TEMAZOS",
+      subtitle: "INCONFUNDIBLE · TEMAZOS",
       title: "FUTURE NOSTALGIA",
       desc: "Importante para ti. Me alegra que te haga feliz.",
       giantName: "DUA LIPA",
