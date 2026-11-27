@@ -1,0 +1,729 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark: #0b0d10;
+  --text-main: #f4f4f6;
+  --text-muted: #a6abb5;
+  --glass-bg: rgba(18, 22, 28, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --accent-cyan: #67c3d8;
+  --accent-warm: #e59a6c;
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* --- TOPBAR --- */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.brand .dot {
+  color: var(--accent-warm);
+}
+
+.route-pill {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
+/* --- SISTEMA DE VISTAS --- */
+.views-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.view {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 96px 48px 130px;
+}
+
+.view.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 6px;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  line-height: 1.1;
+}
+
+.body-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* --- VISTA 01: INICIO --- */
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.76) contrast(1.05);
+}
+
+.bg-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 13, 16, 0.22) 0%,
+    rgba(11, 13, 16, 0.42) 48%,
+    rgba(11, 13, 16, 0.94) 100%
+  );
+}
+
+.viaje-content-telemetry {
+  position: absolute;
+  bottom: 104px;
+  left: 48px;
+  right: 48px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+/* --- CUENTAKILÓMETROS / ODÓMETRO (IZQUIERDA) --- */
+.odometer-unit {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 22px;
+  border-radius: 18px;
+  background: rgba(14, 18, 24, 0.74);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+
+.odometer-eyebrow {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
+
+.odometer-frame {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.odometer-digits {
+  display: flex;
+  gap: 4px;
+}
+
+.odo-digit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 46px;
+  border-radius: 8px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(10, 13, 17, 0.92) 48%,
+    rgba(10, 13, 17, 0.92) 52%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.65);
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-main);
+}
+
+.odometer-unit-label {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+  color: var(--accent-warm);
+}
+
+.odometer-caption {
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  color: var(--text-muted);
+}
+
+/* --- TEXTO DERECHA --- */
+.telemetry-copy-unit {
+  flex: 0 0 min(620px, 50vw);
+  margin-left: auto;
+  padding-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 12px;
+}
+
+.viaje-content-telemetry h1.main-title {
+  font-size: 52px;
+  margin-bottom: 0;
+}
+
+.viaje-content-telemetry p.tagline {
+  font-size: 12px;
+  letter-spacing: 3.5px;
+  color: #cbd0d8;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.viaje-content-telemetry .body-text {
+  max-width: 490px;
+}
+
+/* --- VISTA 02: VIAJE · SHOWCASE EDITORIAL --- */
+#view-viaje {
+  background: radial-gradient(circle at 62% 45%, #161b24 0%, var(--bg-dark) 72%);
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 96px 48px 110px;
+  overflow: hidden;
+}
+
+.showcase-bg-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(140px, 24vw, 320px);
+  font-weight: 600;
+  letter-spacing: 12px;
+  color: rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+/* Carrete superior */
+.showcase-header {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.showcase-categories {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cat-tab {
+  appearance: none;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.cat-tab:hover,
+.cat-tab.active {
+  color: var(--accent-warm);
+}
+
+.cat-sep {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+
+.showcase-reel {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.reel-item {
+  position: relative;
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 6px 0 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.reel-item:hover {
+  color: var(--text-main);
+}
+
+.reel-item.active {
+  color: var(--accent-cyan);
+}
+
+.reel-item .reel-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--accent-cyan);
+}
+
+.reel-item.active .reel-progress {
+  animation: reelFill 12s linear forwards;
+}
+
+@keyframes reelFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Escenario principal */
+.showcase-stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 0.7fr;
+  align-items: center;
+  gap: 24px;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.showcase-stage.is-switching {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.showcase-copy {
+  position: relative;
+  z-index: 3;
+  max-width: 420px;
+}
+
+.showcase-title {
+  font-size: clamp(34px, 4vw, 52px);
+  margin-bottom: 16px;
+  line-height: 1.08;
+}
+
+/* Recorte del torso para arriba + tamaño grande */
+.showcase-visual {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 58vh;
+  max-height: 540px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 58%, transparent 98%),
+    linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, #000 58%, transparent 98%),
+    linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.showcase-visual img {
+  display: block;
+  width: 100%;
+  height: 150%;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center 0%;
+  filter: brightness(0.95) contrast(1.04) drop-shadow(0 24px 40px rgba(0, 0, 0, 0.65));
+}
+
+.showcase-visual-fade {
+  display: none;
+}
+
+.showcase-quote-box {
+  position: relative;
+  z-index: 3;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.showcase-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--accent-warm);
+  max-width: 220px;
+}
+
+.showcase-tag {
+  font-size: 10px;
+  letter-spacing: 2.2px;
+  color: var(--text-muted);
+}
+
+/* --- GALERÍA DECORATIVA SOLO EN THE WEEKND --- */
+.concert-gallery {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.concert-gallery[hidden] {
+  display: none;
+}
+
+.concert-photo-card {
+  width: 96px;
+  height: 116px;
+  padding: 5px 5px 18px;
+  background: rgba(24, 28, 36, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.concert-photo-card:nth-child(1) {
+  transform: rotate(-4deg);
+}
+
+.concert-photo-card:nth-child(2) {
+  transform: rotate(3deg) translateY(-6px);
+}
+
+.concert-photo-card:nth-child(3) {
+  transform: rotate(-2deg);
+}
+
+.concert-photo-card:hover {
+  transform: scale(1.18) rotate(0deg);
+  border-color: var(--accent-warm);
+  z-index: 5;
+}
+
+.concert-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+/* Nombre gigante por delante de la imagen */
+.showcase-giant-name {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(56px, 9.5vw, 132px);
+  font-weight: 600;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: rgba(244, 244, 246, 0.88);
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* --- VISTA 03: REGALO --- */
+.historia-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 25%, #1a1f29, #0b0d10 75%);
+  z-index: 0;
+}
+
+.historia-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1120px;
+}
+
+.historia-content h2 {
+  font-size: 44px;
+  margin-bottom: 28px;
+}
+
+.gift-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  padding: 36px;
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.gift-info {
+  max-width: 640px;
+}
+
+.memory-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  margin-bottom: 12px;
+}
+
+.gift-info h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.player-btn {
+  display: inline-block;
+  padding: 13px 24px;
+  border-radius: 999px;
+  background: rgba(103, 195, 216, 0.15);
+  border: 1px solid rgba(103, 195, 216, 0.45);
+  color: var(--accent-cyan);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.player-btn:hover {
+  background: var(--accent-cyan);
+  color: #0b0d10;
+}
+
+/* --- DOCK INFERIOR --- */
+.bottom-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 999px;
+  background: rgba(16, 20, 26, 0.78);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.dock-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.dock-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dock-btn.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-main);
+}
+
+.dock-num {
+  font-size: 11px;
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  html, body {
+    overflow-y: auto;
+  }
+
+  .view {
+    position: relative;
+    display: none;
+    min-height: 100vh;
+    padding: 80px 24px 120px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .view.active {
+    display: flex;
+  }
+
+  .viaje-content-telemetry {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin-top: 100px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .odometer-unit {
+    align-items: center;
+  }
+
+  .telemetry-copy-unit {
+    flex: none;
+    width: 100%;
+    max-width: 540px;
+    margin-left: 0;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 0;
+  }
+
+  .viaje-content-telemetry h1.main-title {
+    font-size: 40px;
+  }
+
+  #view-viaje {
+    padding: 86px 24px 120px;
+  }
+
+  .showcase-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .showcase-reel {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .showcase-stage {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .showcase-copy,
+  .showcase-quote-box {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .showcase-visual {
+    height: 36vh;
+  }
+
+  .concert-gallery {
+    justify-content: center;
+  }
+
+  .gift-panel {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bottom-dock {
+    width: calc(100% - 32px);
+    justify-content: center;
+  }
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucía · 5 Años</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- CABECERA MINIMALISTA -->
+  <header class="topbar">
+    <div class="brand">LUCÍA <span class="dot">·</span> 5 AÑOS</div>
+    <div class="route-pill" id="routePill">Cáceres ↔ Valencia</div>
+  </header>
+
+  <!-- CONTENEDOR DE VISTAS -->
+  <main class="views-wrapper">
+
+    <!-- VISTA 01: INICIO · 911 + ODÓMETRO -->
+    <section class="view active" id="view-inicio">
+      <div class="bg-layer">
+        <video class="bg-video" autoplay muted loop playsinline poster="assets/images/porsche-bg.jpg">
+          <source src="assets/video/porsche-loop.mp4" type="video/mp4">
+        </video>
+        <div class="bg-gradient-overlay"></div>
+      </div>
+
+      <!-- CONTENIDO INFERIOR: CUENTAKILÓMETROS IZQUIERDA + TEXTO DERECHA -->
+      <div class="viaje-content-telemetry">
+        <div class="odometer-unit" aria-label="Contador de días desde el 27 de julio de 2021">
+          <span class="odometer-eyebrow">Cuentakilómetros · DESDE 27.07.2021</span>
+          <div class="odometer-frame">
+            <div class="odometer-digits" id="odometerDigits">0000</div>
+            <span class="odometer-unit-label">DÍAS</span>
+          </div>
+          <p class="odometer-caption">Nuestra vida · EN RUTA</p>
+        </div>
+
+        <div class="telemetry-copy-unit">
+          <span class="eyebrow">01 · INICIO</span>
+          <h1 class="main-title">EL RINCÓN DE LUCÍA</h1>
+          <p class="tagline">PRECISIÓN. ELEGANCIA. HISTORIA. FUTURO.</p>
+          <p class="body-text">
+            Desde el 27 de julio de 2021 sumando kilómetros, madrugadas y ganas de vernos.
+            Un rincón hecho a medida para ti,
+            donde cada recuerdo pesa tanto como cada curva.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISTA 02: VIAJE · AVENTURAS, VIDEOJUEGOS Y RECUERDOS -->
+    <section class="view" id="view-viaje">
+      <div class="showcase-bg-watermark" id="showcaseWatermark">APEX</div>
+
+      <!-- CARRETE SUPERIOR: CATEGORÍA + SLIDES -->
+      <div class="showcase-header">
+        <div class="showcase-categories" role="tablist" aria-label="Categorías de gustos">
+          <button class="cat-tab active" data-category="juegos" type="button">Videojuegos</button>
+          <span class="cat-sep">/</span>
+          <button class="cat-tab" data-category="musica" type="button">Música</button>
+        </div>
+
+        <div class="showcase-reel" id="showcaseReel">
+          <!-- Se rellena dinámicamente desde JS según la categoría -->
+        </div>
+      </div>
+
+      <!-- ESCENARIO EDITORIAL TIPO FICHA -->
+      <div class="showcase-stage" id="showcaseStage">
+        <!-- Columna izquierda: texto -->
+        <div class="showcase-copy">
+          <span class="eyebrow" id="showcaseSubtitle">APEX LEGENDS · SUPPORT</span>
+          <h2 class="showcase-title" id="showcaseTitle">APOYO TÁCTICO</h2>
+          <p class="body-text" id="showcaseDesc">
+            Siempre cubriendo al equipo y levantando la partida cuando más se complica.
+          </p>
+        </div>
+
+        <!-- Imagen central superpuesta al nombre gigante -->
+        <div class="showcase-visual">
+          <img src="assets/images/lifeline-cutout.png" alt="Lifeline" id="showcaseImg">
+          <div class="showcase-visual-fade"></div>
+        </div>
+
+        <!-- Cita lateral derecha + galería exclusiva si el slide tiene fotos -->
+        <div class="showcase-quote-box">
+          <p class="showcase-quote" id="showcaseQuote">“Nunca te dejo atrás.”</p>
+          <span class="showcase-tag" id="showcaseTag">CÁCERES ↔ VALENCIA</span>
+
+          <div class="concert-gallery" id="concertGallery" hidden></div>
+        </div>
+
+        <!-- Nombre gigante por delante de la imagen -->
+        <div class="showcase-giant-name" id="showcaseGiantName">LIFELINE</div>
+      </div>
+    </section>
+
+    <!-- VISTA 03: REGALO · REPRODUCTOR MP3 / C++ -->
+    <section class="view" id="view-regalo">
+      <div class="historia-bg"></div>
+      <div class="historia-content">
+        <span class="eyebrow">03 · REGALO</span>
+        <h2>TU REPRODUCTOR MP3</h2>
+
+        <div class="gift-panel">
+          <div class="gift-info">
+            <span class="memory-tag">Proyecto a medida · C++</span>
+            <h3>Reproductor de música para tu portátil</h3>
+            <p class="body-text">
+              Pensado para escuchar vuestras canciones favoritas sin distracciones.
+              Aquí tendrás listo el acceso de descarga y los detalles en cuanto esté compilado.
+            </p>
+          </div>
+          <div class="gift-actions">
+            <a href="#proximamente" id="downloadBtn" class="player-btn">Próximamente · Reproductor MP3</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- DOCK INFERIOR -->
+  <nav class="bottom-dock" aria-label="Secciones principales">
+    <button class="dock-btn active" data-target="view-inicio" type="button">
+      <span class="dock-num">01</span>
+      <span class="dock-text">Inicio</span>
+    </button>
+    <button class="dock-btn" data-target="view-viaje" type="button">
+      <span class="dock-num">02</span>
+      <span class="dock-text">Viaje</span>
+    </button>
+    <button class="dock-btn" data-target="view-regalo" type="button">
+      <span class="dock-num">03</span>
+      <span class="dock-text">Regalo</span>
+    </button>
+  </nav>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
